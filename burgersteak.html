@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div style="position: relative;">
+    <a href="menu.html"><img src="jabii.png" style="position: relative; left: 50px; bottom: -15px; z-index: 1;" width="500" alt="Jabii Logo">
+    <div style="position: absolute; top: 120px; right: 20px; z-index: 5;">
+        <a href="index.html" style="display: inline-block; padding: 15px 25px; text-decoration: none; color: white; background-color: red;" onmouseover="this.style.backgroundColor='darkred'" onmouseout="this.style.backgroundColor='red'">Home</a>
+
+        <a href="menu.html" style="display: inline-block; padding: 15px 25px; text-decoration: none; color: white; background-color: red;" onmouseover="this.style.backgroundColor='darkred'" onmouseout="this.style.backgroundColor='red'">Menu</a>
+
+        <a href="about.html" style="display: inline-block; padding: 15px 25px; text-decoration: none; color: white; background-color: red;" onmouseover="this.style.backgroundColor='darkred'" onmouseout="this.style.backgroundColor='red'">About</a>
+
+        <!-- Location dropdown -->
+        <div class="dropdown" style="display: inline-block; position: relative;">
+            <button class="dropbtn" style="padding: 15px 25px; text-decoration: none; color: white; background-color: red;" onmouseover="this.style.backgroundColor='darkred'" onmouseout="this.style.backgroundColor='red'">Location</button>
+            <div class="dropdown-content" style="position: absolute; top: 100%; right: 0; background-color: red; display: none; z-index: 3;">
+                <a style="text-decoration: none; color: white;" href="#" onclick="openGoogleMaps('https://www.google.com/maps/place/Jollibee/@15.7904076,120.9917891,16.75z/data=!4m6!3m5!1s0x3390da31ca701285:0x6d79d93f134af019!8m2!3d15.7921373!4d120.9900497!16s%2Fg%2F12qh936wq?entry=ttu')">Jollibee Main Branch</a><br><br>
+                <a style="text-decoration: none; color: white;" href="#" onclick="openGoogleMaps('https://www.google.com/maps/place/Jollibee/@15.7975102,120.9926925,18z/data=!3m1!4b1!4m6!3m5!1s0x3390db7c5ff11431:0x7bb3ce6992ea991e!8m2!3d15.7975102!4d120.99398!16s%2Fg%2F11ffgvs63w?entry=ttu')">Jollibee Waltermart</a><br><br>
+                <a style="text-decoration: none; color: white;" href="#" onclick="openGoogleMaps('https://www.google.com/maps/place/Jollibee/@15.8031023,120.9981084,18.5z/data=!4m6!3m5!1s0x3390db160a4893cb:0xf972c66860dd65c2!8m2!3d15.8038856!4d120.9988467!16s%2Fg%2F11vc3v2rpg?entry=ttu')">Jollibee Malasin</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openGoogleMaps(url) {
+            window.open(url, '_blank');
+        }
+        document.querySelector('.dropbtn').addEventListener('click', function() {
+            var dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.style.display = (dropdownContent.style.display === 'none' || dropdownContent.style.display === '') ? 'block' : 'none';
+        });
+    </script>
+</div>
+
+<br><br><hr style="border: none; height: 10px; background-color: yellow;"><br><br>
+
+<link href="https://fonts.cdnfonts.com/css/jellee" rel="stylesheet">
+<h1 style="color:black;
+          text-align:center;
+          font-family: 'Jellee', sans-serif;
+          font-size:40px;">BURGER STEAKS</h1>
+
+<div style="text-align:center;">
+<img src="burgersteak/1.png"
+     width="280"
+     height="250"><br>
+<p>1 pc. Burger Steak<br>P60.00</p>
+
+<img src="burgersteak/2.png"
+     width="280"
+     height="250"><br>
+<p>2 pc. Burger Steak<br>P119.00</p>
+
+<img src="burgersteak/3.png"
+     width="280"
+     height="250"><br>
+<p>1 pc. Burger Steak w/ Fries & Drink<br>P133.00</p>
+
+<img src="burgersteak/5.png"
+     width="280"
+     height="250"><br>
+<p>8 pc. Burger Steak Family Plan<br>P470.00</p>
+
+<img src="burgersteak/4.png"
+     width="330"
+     height="250"><br>
+<p>6 pc. Burger Steak w/ Jolly Spaghetti Family Plan<br>P570.00</p>
+</div><br><br>
+
+<center>
+<a href="burgersteak.html" 
+   style="display: inline-block; padding: 15px 25px; text-decoration: none; color: white; background-color: red;"
+   onmouseover="this.style.backgroundColor='darkred'"
+   onmouseout="this.style.backgroundColor='red'">Back to Top</a><center>
+
+</body>
+</html>
