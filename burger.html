@@ -2,6 +2,10 @@
 <html>
 <body>
 
+<head>
+    <title>Jollibee Menu - Burgers</title>
+</head>
+
 <div style="position: relative;">
     <a href="menu.html"><img src="jabii.png" style="position: relative; left: 50px; bottom: -15px; z-index: 1;" width="500" alt="Jabii Logo">
     <div style="position: absolute; top: 120px; right: 20px; z-index: 5;">
@@ -42,38 +46,116 @@
           font-size:40px;">BURGERS</h1>
 
 <div style="text-align:center;">
-<img src="burger/1.png"
-     width="280"
-     height="250"><br>
-<p>Yumburger<br>P40.00</p>
+    <div>
+        <img src="burger/1.png" width="280" height="250"><br>
+        <p>Yumburger<br>P40.00</p>
+        <button onclick="addToCart('Yumburger', 40.00)" style="background-color: red; color: white;">Add to Cart</button>
+    </div>
 
-<img src="burger/2.png"
-     width="280"
-     height="250"><br>
-<p>Cheesy Yumburger<br>P69.00</p>
+    <div>
+        <img src="burger/2.png" width="280" height="250"><br>
+        <p>Cheesy Yumburger<br>P69.00</p>
+        <button onclick="addToCart('Cheesy Yumburger', 69.00)" style="background-color: red; color: white;">Add to Cart</button>
+    </div>
 
-<img src="burger/3.png"
-     width="280"
-     height="250"><br>
-<p>Bacon Cheesy Yumburger<br>P96.00</p>
+    <div>
+        <img src="burger/3.png" width="280" height="250"><br>
+        <p>Bacon Cheesy Yumburger<br>P96.00</p>
+        <button onclick="addToCart('Bacon Cheesy Yumburger', 96.00)" style="background-color: red; color: white;">Add to Cart</button>
+    </div>
 
-<img src="burger/4.png"
-     width="300"
-     height="250"><br>
-<p>Champ Jr.<br>P105.00</p>
+    <div>
+        <img src="burger/4.png" width="300" height="250"><br>
+        <p>Champ Jr.<br>P105.00</p>
+        <button onclick="addToCart('Champ Jr.', 105.00)" style="background-color: red; color: white;">Add to Cart</button>
+    </div>
 
-<img src="burger/5.png"
-     width="300"
-     height="250"><br>
-<p>Champ<br>P179.00</p>
+    <div>
+        <img src="burger/5.png" width="300" height="250"><br>
+        <p>Champ<br>P179.00</p>
+        <button onclick="addToCart('Champ', 179.00)" style="background-color: red; color: white;">Add to Cart</button>
+    </div>
 </div><br><br>
 
+<!-- Shopping Cart Script -->
+<div class="cart-content" style="display: none;">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <p>Total Price: PHP<span id="total-price">0.00</span></p>
+</div>
+
 <center>
-<a href="burger.html" 
-   style="display: inline-block; padding: 15px 25px; text-decoration: none; color: white; background-color: red;"
-   onmouseover="this.style.backgroundColor='darkred'"
-   onmouseout="this.style.backgroundColor='red'">Back to Top</a>
-<center>
+    <a href="burger.html" style="display: inline-block; padding: 15px 25px; text-decoration: none; color: white; background-color: red;"
+        onmouseover="this.style.backgroundColor='darkred'" onmouseout="this.style.backgroundColor='red'">Back to Top</a>
+</center>
+
+<h2 style="color:black;
+           text-align:center;
+           font-family:comic sans ms;
+           font-size:10px;">Made by: Jaden<br><br>This site is made for Education Purposes ONLY</h2>
+
+<script>
+    // Initialize the cart from local storage
+    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCartDisplay();
+
+    function addToCart(itemName, itemPrice) {
+        // Add item to the cart
+        cart.push({ name: itemName, price: itemPrice });
+
+        // Save the cart to local storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update the cart display
+        updateCartDisplay();
+    }
+
+    function removeFromCart(index) {
+        // Remove item from the cart based on index
+        cart.splice(index, 1);
+
+        // Save the updated cart to local storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update the cart display
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        var cartContent = document.querySelector('.cart-content');
+        var cartItems = document.getElementById('cart-items');
+        var totalPriceElement = document.getElementById('total-price');
+        var totalPrice = 0;
+
+        // Clear existing cart items
+        cartItems.innerHTML = '';
+
+        // Populate cart items
+        cart.forEach(function (item, index) {
+            var listItem = document.createElement('li');
+            listItem.textContent = item.name + ' - PHP' + item.price.toFixed(2);
+
+            // Add remove button
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.onclick = function () {
+                removeFromCart(index);
+            };
+
+            listItem.appendChild(removeButton);
+            cartItems.appendChild(listItem);
+
+            // Update the total price
+            totalPrice += item.price;
+        });
+
+        // Update the total price display
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+
+        // Display the cart content
+        cartContent.style.display = cart.length > 0 ? 'block' : 'none';
+    }
+</script>
 
 </body>
 </html>
